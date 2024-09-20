@@ -21,14 +21,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push tag
-        if: ${{ github.ref_name != 'main' }}
+        if: ${{ github.ref_name != 'master' }}
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: talexie/openhim-mediator-mapping:${{ github.ref_name }}
 
       - name: Build and push latest
-        if: ${{ github.ref_name == 'main' }}
+        if: ${{ github.ref_name == 'master' }}
         uses: docker/build-push-action@v2
         with:
           push: true
